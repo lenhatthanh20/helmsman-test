@@ -23,3 +23,21 @@ test('normalizes mixed case words', () => {
 test('returns an empty string for empty input', () => {
   assert.equal(titleCase(''), '')
 })
+
+test('keeps multiple acronyms and a leading acronym', () => {
+  assert.equal(titleCase('parse URL and API data'), 'Parse URL and API Data')
+  assert.equal(titleCase('API design'), 'API Design')
+})
+
+test('capitalizes lower case words', () => {
+  assert.equal(titleCase('hello world'), 'Hello World')
+  assert.equal(titleCase('hello'), 'Hello')
+})
+
+test('capitalizes a small word that is the only word', () => {
+  assert.equal(titleCase('of'), 'Of')
+})
+
+test('does not trim or collapse whitespace', () => {
+  assert.equal(titleCase('  history of   the web '), '  History of   the Web ')
+})
